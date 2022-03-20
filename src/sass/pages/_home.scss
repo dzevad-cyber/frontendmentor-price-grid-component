@@ -1,0 +1,68 @@
+@use '../abstracts/colors' as *;
+@use '../abstracts/typography' as *;
+@use '../abstracts/mixins' as *;
+
+.main {
+  min-height: 100vh;
+
+  display: grid;
+  place-content: center;
+  padding: 2rem;
+  background-color: $clr-neutral-100;
+}
+
+.cards {
+  $clr-common: $clr-prim-300;
+
+  display: grid;
+  border-radius: 5px;
+  overflow: hidden;
+  max-width: 37.5rem;
+
+  &__top {
+    background-color: $clr-prim-300;
+
+    & > h2 {
+      color: $clr-prim-light-100;
+    }
+
+    & > .card__offer {
+      color: $clr-prim-200;
+    }
+
+    @include mq(medium) {
+      grid-column: 1 / -1;
+      grid-row: 1 / 2;
+    }
+  }
+
+  &__left {
+    background-color: $clr-prim-100;
+    color: $clr-common;
+
+    & > .card__promotion > .card__promotion--monthly > .card__price {
+      font-size: 3rem;
+      font-weight: $fw-karla-700;
+    }
+
+    @include mq(medium) {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+    }
+  }
+
+  &__right {
+    background-color: $clr-prim-light-100;
+    color: $clr-common;
+
+    @include mq(medium) {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+    }
+  }
+
+  @include mq(medium) {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 700px;
+  }
+}
